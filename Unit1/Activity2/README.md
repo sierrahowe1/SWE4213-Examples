@@ -45,7 +45,7 @@ export default function MyButton({ onClick }) {
 </details>
 <br>
 
-**Todo 6:** In `Form.jsx` add to more input fields email and phone. Additionally add your MyButton component.
+**Todo 6:** In `Form.jsx` add two more input fields email and phone. Additionally add your MyButton component.
 
 <details>
   <summary>Reveal Answer</summary>
@@ -65,7 +65,7 @@ return (
 </details>
 <br>
 
-**Todo 7:** In `Form.jsx` update the onSubmit function to log the form values the the console and reset them after.
+**Todo 7:** In `Form.jsx` update the onSubmit function to log the form values to the console and reset them after.
 
 <details>
   <summary>Reveal Answer</summary>
@@ -99,7 +99,7 @@ function App() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold text-gray-800 py-10 px-20"> SWE4213 Activity 2: </h1>
+      <h1> SWE4213 Activity 2: </h1>
       <Form />
     </>
   )

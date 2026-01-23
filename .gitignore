@@ -9,3 +9,8 @@ secrets.txt
 
 *.DS_Store
 *.class
+*/Temp/*
+**/node_modules/
+
+
+Unit1/activity3/Bruno/environments/*.bru

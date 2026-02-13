@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:16
+    container_name: db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=video_metadata
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: "no"
+
+  video-storage:
+    image: video-storage
+    build:
+      context: ./video-storage
+      dockerfile: Dockerfile
+    container_name: video-storage
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+    restart: "no"
+
+  video-service:
+    image: video-service
+    build:
+      context: ./video-streaming
+      dockerfile: Dockerfile
+    container_name: video-service
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_URL=postgresql://user:password@db:5432/video_metadata
+      - VIDEO_STORAGE_URL=http://video-storage:4000
+    depends_on:
+      - db
+      - video-storage
+    restart: "no"

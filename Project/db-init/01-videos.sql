@@ -1,3 +1,6 @@
+CREATE DATABASE videos;
+\connect videos
+
 CREATE TABLE videos (
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,

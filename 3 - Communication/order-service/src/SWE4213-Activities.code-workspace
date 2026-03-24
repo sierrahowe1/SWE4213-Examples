@@ -2,12 +2,6 @@
 	"folders": [
 		{
 			"path": "../../../../SWE4213-Activities"
-		},
-		{
-			"path": "../.."
-		},
-		{
-			"path": "../../../2 - DockerCompose"
 		}
 	],
 	"settings": {

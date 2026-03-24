@@ -83,10 +83,10 @@ async function connectWithRetry(url, retries = 10, delay = 3000) {
 async function main() {
   // TODO (Part 3): Connect to RabbitMQ and store the channel.
   //
-  // 1. Connect:   const connection = await connectWithRetry(RABBITMQ_URL);
-  // 2. Channel:   channel = await connection.createChannel();
-  // 3. Assert queue: await channel.assertQueue("order.placed", { durable: false });
-  // 4. Log success: console.log("Connected to RabbitMQ");
+  const connection = await connectWithRetry(RABBITMQ_URL);
+  channel = await connection.createChannel();
+  await channel.assertQueue("order.placed", { durable: false });
+  console.log("Connected to RabbitMQ");
 
   app.listen(PORT, () => {
     console.log(`Order service running on port ${PORT}`);

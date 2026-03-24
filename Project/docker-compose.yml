@@ -55,10 +55,8 @@ services:
       context: ./video-streaming
       dockerfile: Dockerfile
     container_name: video-streaming
-    ports:
-      - "3000:3000"
     environment:
-      - PORT=3000
+      - PORT=4001
       - DB_URL=postgresql://user:password@db:5432/videos
       - VIDEO_STORAGE_URL=http://video-storage:4000
       - HISTORY_URL=http://history:5000
@@ -68,4 +66,19 @@ services:
       - video-storage
       - history
       - rabbitmq
+    restart: "no"
+
+  gateway:
+    image: gateway
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - VIDEO_STREAMING_URL=http://video-service:4001
+    depends_on:
+      - video-service
     restart: "no"

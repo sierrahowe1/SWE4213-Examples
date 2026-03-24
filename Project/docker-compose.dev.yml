@@ -13,3 +13,8 @@ services:
     volumes:
       - ./history/src:/usr/src/app/src
     command: npm run dev
+
+  gateway:
+    volumes:
+      - ./gateway/src:/usr/src/app/src
+    command: npm run dev
